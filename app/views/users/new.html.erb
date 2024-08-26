@@ -1,0 +1,12 @@
+<%= form_tag({controller: 'users', action: 'create'}, method: 'post') do %>
+  <label for="name">Name:</label><br>
+  <input name="user[name]" id="name"><br>
+
+  <label for="user_password">Password:</label><br>
+  <input name="user[password]" id="user_password" type="password"><br>
+
+  <label for="user_password_confirmation">Password Confirmation:</label><br>
+  <input name="user[password_confirmation]" id="user_password_confirmation" type="password"><br><br>
+
+  <input type="submit" value="Create New User">
+<% end %>
