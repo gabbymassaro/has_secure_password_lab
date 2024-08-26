@@ -1,19 +1,16 @@
 class UsersController < ApplicationController
   def new
-    @user = User.new
   end
 
   def create
-    if params[:password] != params[:password_confirmation]
-      render :new
+    @user = User.new(user_params)
+
+    if @user.save
+      session[:user_id] = @user.id
+      session[:name] = @user.name
+      redirect_to root_path
     else
-      @user = User.new(user_params)
-      if @user.save
-        session[:user_id] = @user.id
-        redirect_to root_path
-      else
-        redirect_to new_user_path
-      end
+      redirect_to new_user_path
     end
   end
 
